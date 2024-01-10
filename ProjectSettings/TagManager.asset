@@ -3,37 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Light
-  - Enemy
-  - RespawnCanvas
-  - PauseCanvas
-  - Tilemap
-  - Lamp
-  - TransitionCanvas
-  - Aura
-  - EnemyTriggers
-  - PlayerAura
-  - JumpThrough
-  - Hazards
-  - Collectibles
-  - ChargeLight
-  - Tile
-  - Environment
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Light
+  - 
   - Water
   - UI
-  - IgnoreEverything
-  - Environment
-  - Enemy
-  - IgnoreEnemies
-  - JumpThrough
-  - OnlyEnvironment
-  - OnlyLight
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
