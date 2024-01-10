@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Light
+  - Enemy
+  - RespawnCanvas
+  - PauseCanvas
+  - Tilemap
+  - Lamp
+  - TransitionCanvas
+  - Aura
+  - EnemyTriggers
+  - PlayerAura
+  - JumpThrough
+  - Hazards
+  - Collectibles
+  - ChargeLight
+  - Tile
+  - Environment
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Light
+  - Water
+  - UI
+  - IgnoreEverything
+  - Environment
+  - Enemy
+  - IgnoreEnemies
+  - JumpThrough
+  - OnlyEnvironment
+  - OnlyLight
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
