@@ -1,9 +1,9 @@
 //------------------------------------------------------------------------------
 //
-// File Name:    
-// Author(s):    
-// Project:        
-// Course:        
+// File Name:    PauseManager.cs
+// Author(s):    Jared
+// Project:      KnightLight
+// Course:       GAM250
 //
 // Copyright © 2023 DigiPen (USA) Corporation.
 //
