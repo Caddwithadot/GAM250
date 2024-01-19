@@ -13,7 +13,8 @@ ScriptedImporter:
   warnings: []
   missingSortingLayers: []
   missingLayers: []
-  missingTags: []
+  missingTags:
+  - Environment
   importerVersion: 26
   pixelsPerUnit: 64
   edgesPerEllipse: 32
