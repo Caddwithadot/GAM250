@@ -10,6 +10,7 @@ public class LightHealth : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private ParticleSystem ps;
+    private LaunchedLight launchedLight;
 
     public float startDelay = 0.5f;
     private float startTimer = 0;
@@ -23,6 +24,11 @@ public class LightHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         ps = GetComponent<ParticleSystem>();
+
+        if(GetComponent<LaunchedLight>() != null)
+        {
+            launchedLight = GetComponent<LaunchedLight>();
+        }
 
         startTimer = startDelay;
     }
@@ -68,6 +74,11 @@ public class LightHealth : MonoBehaviour
 
             //start the death timer
             deathTimer = deathDelay;
+
+            if (launchedLight != null)
+            {
+                Destroy(launchedLight);
+            }
         }
     }
 }

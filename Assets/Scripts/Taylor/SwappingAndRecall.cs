@@ -11,8 +11,13 @@ public class SwappingAndRecall : MonoBehaviour
 
     [HideInInspector]
     public GameObject Knight;
-    private GameObject Light;
-    private GameObject Armor;
+
+    [HideInInspector]
+    public GameObject Light;
+
+    [HideInInspector]
+    public GameObject Armor;
+
     private GameObject Recall;
 
     private CameraFollow cameraFollow;
@@ -23,6 +28,9 @@ public class SwappingAndRecall : MonoBehaviour
     public float lightHopForce = 10f;
     public float minRecallSpeed = 15f;
     public float maxRecallSpeed = 25f;
+
+    //
+    public bool launchUnlocked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,31 +45,21 @@ public class SwappingAndRecall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R) && !amRecalling)
+        //return to Knight
+        if(Input.GetKeyDown(KeyCode.R) && !amKnight && !amRecalling)
         {
             amKnight = !amKnight;
 
-            if (amKnight)
-            {
-                BecomeKnight();
-            }
-            else
-            {
-                BecomeLight();
-            }
+            BecomeKnight();
         }
-    }
 
-    public void BecomeKnight()
-    {
-        // Spawn a new sprite next to the Light character
-        Recall = Instantiate(recallPrefab, Light.transform.position, Quaternion.identity, transform);
-        Destroy(Light);
+        //become Light
+        if (Input.GetKeyDown(KeyCode.Space) && amKnight && !launchUnlocked)
+        {
+            amKnight = !amKnight;
 
-        cameraFollow.followTarget = Recall.transform;
-
-        // Lerping the new sprite's position to the Armor
-        StartCoroutine(RecallToArmor(Recall));
+            BecomeLight();
+        }
     }
 
     public void BecomeLight()
@@ -80,7 +78,19 @@ public class SwappingAndRecall : MonoBehaviour
         cameraFollow.followTarget = Light.transform;
     }
 
-    // Coroutine for lerping the Recall to the Armor
+    public void BecomeKnight()
+    {
+        // Spawn a new sprite next to the Light character
+        Recall = Instantiate(recallPrefab, Light.transform.position, Quaternion.identity, transform);
+        Destroy(Light);
+
+        cameraFollow.followTarget = Recall.transform;
+
+        // Lerping the new sprite's position to the Armor
+        StartCoroutine(RecallToArmor(Recall));
+    }
+
+    //coroutine to recall to Armor
     private IEnumerator RecallToArmor(GameObject recallObject)
     {
         amKnight = false;
