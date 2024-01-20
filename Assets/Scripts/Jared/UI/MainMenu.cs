@@ -18,10 +18,27 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public bool KeyPressed = false;
-    public float AnimationTimer = 0f;
-    public float AnimationDuration = 0f;
+    private float AnimationTimer = 0f;
+    private float AnimationDuration = 2f;
+
+    public Animation StartAnimation;
+
+    public ParticleSystem IdleParticleSystem;
+
+    public Animator CameraAnimator;
+    public Animator KnightSpriteAnimator;
+
+    public GameObject KnightSprite;
 
     public GameObject ButtonsPanel;
+
+    public GameObject QuitConfirmationPrompt;
+
+    private void Start()
+    {
+        if (StartAnimation != null)
+            AnimationDuration = StartAnimation.clip.length;
+    }
 
     private void Update()
     {
@@ -29,9 +46,15 @@ public class MainMenu : MonoBehaviour
         {
             AnimationTimer += Time.deltaTime;
 
+            AnyKeyPressed();
+
             if (AnimationTimer >= AnimationDuration)
             {
-                ButtonFadeInAnimation();
+                ButtonFadeIn();
+
+                //Add particle explosion anim
+                IdleParticleSystemEffects();
+
             }
 
 
@@ -39,35 +62,23 @@ public class MainMenu : MonoBehaviour
         else if (Input.anyKeyDown)
         {
             KeyPressed = true;
-            AnyKeyPressed();
-        }
-
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            
         }
     }
 
     public void AnyKeyPressed()
     {
+        IdleParticleSystem.Stop();
 
-        //Play animation
+        KnightSprite.GetComponent<Animator>().SetTrigger("KnightSpriteAwake");
+    }
 
-        //Timer
-
-        //Unlock button panel
+    public void ButtonFadeIn()
+    {
         ButtonsPanel.SetActive(true);
 
         for (int i = 0; i < ButtonsPanel.transform.childCount; i++)
         {
-            ButtonsPanel.transform.GetChild(i).GetComponent<Animator>().SetTrigger("ButtonFadeIn");
-        }
-    }
 
-    public void ButtonFadeInAnimation()
-    {
-        for (int i = 0; i < ButtonsPanel.transform.childCount; i++)
-        {
             if (ButtonsPanel.transform.GetChild(i).GetComponent<Animator>() != null)
             {
                 ButtonsPanel.transform.GetChild(i).GetComponent<Animator>().SetTrigger("ButtonFadeIn");
@@ -75,8 +86,53 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void Play()
+    public void ButtonFadeOut()
+    {
+        for (int i = 0; i < ButtonsPanel.transform.childCount; i++)
+        {
+            if (ButtonsPanel.transform.GetChild(i).GetComponent<Button>() != null)
+            {
+                ButtonsPanel.transform.GetChild(i).GetComponent<Button>().interactable = false;
+            }
+
+            if (ButtonsPanel.transform.GetChild(i).GetComponent<Animator>() != null)
+            {
+                ButtonsPanel.transform.GetChild(i).GetComponent<Animator>().SetTrigger("ButtonFadeOut");
+            }
+        }
+    }
+
+    public void IdleParticleSystemEffects()
+    {
+        ParticleSystem.MainModule main = IdleParticleSystem.main;
+        main.startColor = Color.white;
+        main.startSpeed = 3.5f;
+        main.startSize = 0.5f;
+    }
+
+    public void StartButton()
+    {
+        CameraAnimator.SetTrigger("CameraToSaveFiles");
+        KnightSpriteAnimator.SetTrigger("KnightSpriteDrop");
+
+        ButtonFadeOut();
+    }
+    
+    public void SettingsButton()
     {
 
+        ButtonFadeOut();
+    }
+
+    public void CreditsButton()
+    {
+
+
+        ButtonFadeOut();
+    }
+
+    public void QuitButton()
+    {
+        Instantiate(QuitConfirmationPrompt);
     }
 }
