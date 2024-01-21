@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Jared/MovementPlaytest.unity
-    guid: 91354c55bb81d764b8dcc57ba00b1007
+    path: Assets/Scenes/Jared/MainMenu.unity
+    guid: e11d4718197965e4ebc659efa03a793e
   m_configObjects: {}

@@ -133,6 +133,13 @@ public class MainMenu : MonoBehaviour
 
     public void QuitButton()
     {
-        Instantiate(QuitConfirmationPrompt);
+        if (QuitConfirmationPrompt != null)
+        {
+            Instantiate(QuitConfirmationPrompt);
+        }
+        else
+        {
+            Application.Quit();
+        }
     }
 }
