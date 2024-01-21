@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Launch : MonoBehaviour
@@ -31,17 +32,17 @@ public class Launch : MonoBehaviour
     void Update()
     {
         //prepare launch trajectory
-        if (Input.GetKeyDown(KeyCode.Space) && swap.amKnight)
+        if (Input.GetKeyDown(KeyCode.W))
         {
             holding = true;
         }
 
-        if(Input.GetKeyUp(KeyCode.Space) && swap.amKnight)
+        if (Input.GetKeyUp(KeyCode.W))
         {
             holding = false;
 
             //launch out of armor
-            if(heldTime >= heldDuration)
+            if (heldTime >= heldDuration && swap.amKnight && !swap.amRecalling)
             {
                 Vector3 launchDirection = Arrow.GetComponent<FaceMouse>().direction;
 
@@ -64,7 +65,7 @@ public class Launch : MonoBehaviour
 
                 Destroy(Arrow);
             }
-            else
+            else if (swap.amKnight && !swap.amRecalling)
             {
                 //hop out of armor
                 swap.amKnight = false;
@@ -78,9 +79,10 @@ public class Launch : MonoBehaviour
         {
             heldTime += Time.deltaTime;
 
-            if(heldTime >= heldDuration)
+            Knight = swap.Knight;
+
+            if (heldTime >= heldDuration && Knight != null)
             {
-                Knight = swap.Knight;
                 Arrow = Instantiate(arrowPrefab, Knight.transform);
 
                 holding = false;

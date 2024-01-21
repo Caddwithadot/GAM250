@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7787374453896544206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7787374453896544207}
+  - component: {fileID: 7787374453896544204}
+  - component: {fileID: 7787374453896544205}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7787374453896544207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7787374453896544206}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -23.06, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7787374453896544204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7787374453896544206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5ae1e5df79a1d42831bb572ebd17f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knightPrefab: {fileID: 7151920423606699371, guid: ff329dc6b769b94478ca7ff149b1180c, type: 3}
+  lightPrefab: {fileID: 2092524040257638725, guid: c9551aa74b2ed9841b2f36afe6b2230b, type: 3}
+  armorPrefab: {fileID: 957590097145205166, guid: 7bef63dd932ff094f8fbff22de8c0f9e, type: 3}
+  recallPrefab: {fileID: 2736000232135246986, guid: 199586a991a51cf428b101771e58608e, type: 3}
+  Knight: {fileID: 0}
+  Light: {fileID: 0}
+  Armor: {fileID: 0}
+  amKnight: 1
+  amRecalling: 0
+  lightHopForce: 10
+  minRecallSpeed: 17.5
+  maxRecallSpeed: 25
+  launchUnlocked: 1
+--- !u!114 &7787374453896544205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7787374453896544206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c354fcf008a8704a9153d4205f7c022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 8642591730655550595, guid: 414d6d737f3281748bb8d9ee0c27980b, type: 3}
+  armorPrefab: {fileID: 957590097145205166, guid: 7bef63dd932ff094f8fbff22de8c0f9e, type: 3}
+  lightPrefab: {fileID: 2092524040257638725, guid: c9551aa74b2ed9841b2f36afe6b2230b, type: 3}
+  heldDuration: 0.2
+  launchForce: 22

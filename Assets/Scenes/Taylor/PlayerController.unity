@@ -1404,6 +1404,7 @@ MonoBehaviour:
   Light: {fileID: 0}
   Armor: {fileID: 0}
   amKnight: 1
+  amRecalling: 0
   lightHopForce: 10
   minRecallSpeed: 17.5
   maxRecallSpeed: 25

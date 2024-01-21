@@ -23,7 +23,7 @@ public class SwappingAndRecall : MonoBehaviour
     private CameraFollow cameraFollow;
 
     public bool amKnight = true;
-    private bool amRecalling = false;
+    public bool amRecalling = false;
 
     public float lightHopForce = 10f;
     public float minRecallSpeed = 15f;
@@ -46,7 +46,7 @@ public class SwappingAndRecall : MonoBehaviour
     void Update()
     {
         //return to Knight
-        if(Input.GetKeyDown(KeyCode.R) && !amKnight && !amRecalling)
+        if(Input.GetKeyDown(KeyCode.W) && !amKnight && !amRecalling)
         {
             amKnight = !amKnight;
 
@@ -54,7 +54,7 @@ public class SwappingAndRecall : MonoBehaviour
         }
 
         //become Light
-        if (Input.GetKeyDown(KeyCode.Space) && amKnight && !launchUnlocked)
+        if (Input.GetKeyDown(KeyCode.W) && amKnight && !amRecalling && !launchUnlocked)
         {
             amKnight = !amKnight;
 
@@ -94,13 +94,12 @@ public class SwappingAndRecall : MonoBehaviour
     private IEnumerator RecallToArmor(GameObject recallObject)
     {
         amKnight = false;
+        amRecalling = true;
 
         float distanceToArmor = Vector3.Distance(Light.transform.position, Armor.transform.position);
         float currentLerpSpeed = (distanceToArmor <= 10f) ? minRecallSpeed : maxRecallSpeed;
 
-        amRecalling = true;
-
-        while (distanceToArmor > 0.1f)
+        while (distanceToArmor > 0.01f)
         {
             recallObject.transform.position = Vector3.MoveTowards(recallObject.transform.position, Armor.transform.position, currentLerpSpeed * Time.deltaTime);
 
@@ -117,6 +116,9 @@ public class SwappingAndRecall : MonoBehaviour
 
         //set Knight to the camera target
         cameraFollow.followTarget = Knight.transform;
+        amKnight = true;
+
+        yield return new WaitForSeconds(0.2f);
         amKnight = true;
         amRecalling = false;
     }

@@ -32,7 +32,7 @@ public class PlayerMovementNEW : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             juffTimer = juffTime;
 
@@ -42,7 +42,7 @@ public class PlayerMovementNEW : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             jumped = false;
 
