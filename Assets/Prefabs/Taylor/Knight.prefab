@@ -159,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.2}
+  m_Size: {x: 0.95, y: 0.2}
   m_EdgeRadius: 0
 --- !u!114 &7151920423606699372
 MonoBehaviour:
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amKnight: 1
   moveSpeed: 7
-  jumpForce: 18
+  jumpForce: 16
   isGrounded: 0
   coyoteTime: 0.075
   juffTime: 0.15
