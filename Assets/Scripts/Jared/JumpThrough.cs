@@ -15,9 +15,9 @@ public class JumpThrough : MonoBehaviour
 
     private void Update()
     {
-        currentPlayer = GameObject.FindObjectOfType<PlayerMovementNEW>().gameObject;
+        currentPlayer = GameObject.FindObjectOfType<PlayerMovementNEW>()?.gameObject;
 
-        if (currentPlayer.transform.position.y + Offset <= transform.position.y)
+        if (currentPlayer != null && currentPlayer.transform.position.y + Offset <= transform.position.y || Input.GetKey(KeyCode.S))
         {
             boxCollider2D.enabled = false;
         }
